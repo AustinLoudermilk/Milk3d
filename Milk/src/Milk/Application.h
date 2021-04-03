@@ -2,7 +2,8 @@
 
 #include "Core.h"
 
-namespace Milk {
+namespace Milk
+{
 	
 	class MILK_API Application
 	{

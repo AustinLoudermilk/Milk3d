@@ -1,15 +1,17 @@
 #include "Application.h"
 
-namespace Milk {
-	Application::Application() {
-
+namespace Milk
+{
+	Application::Application()
+	{
 	}
 
-	Application::~Application() {
-
+	Application::~Application()
+	{
 	}
 
-	void Application::Run() {
+	void Application::Run()
+	{
 		while (true);
 	}
 }

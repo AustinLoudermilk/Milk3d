@@ -1,14 +1,18 @@
 #include <Milk.h>
 
-class Sandbox : public Milk::Application {
+class Sandbox : public Milk::Application
+{
 public:
-	Sandbox() {
+	Sandbox() 
+	{
 	}
 
-	~Sandbox() {
+	~Sandbox()
+	{
 	}
 };
 
-Milk::Application* Milk::CreateApplication() {
+Milk::Application* Milk::CreateApplication()
+{
 	return new Sandbox();
 }
