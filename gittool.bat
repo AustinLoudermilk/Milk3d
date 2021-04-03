@@ -10,15 +10,18 @@ ECHO 1 - status
 ECHO 2 - add all
 ECHO 3 - reset
 ECHO 4 - commit
-echo.
-ECHO 5 - exit
+ECHO.
+ECHO 5 - clone
+ECHO.
+ECHO 6 - exit
 ECHO.
 SET /P M= ~ 
 IF %M%==1 GOTO STATUS
 IF %M%==2 GOTO ADD
 IF %M%==3 GOTO RESET
 IF %M%==4 GOTO COMMIT
-IF %M%==5 GOTO EOF
+IF %M%==5 GOTO CLONE
+IF %M%==6 GOTO EOF
 
 :STATUS
 CLS
@@ -37,6 +40,7 @@ ECHO.
 ECHO --GIT ADD--
 ECHO.
 git add *
+ECHO All files added.
 ECHO.
 ECHO -- -- -- -- --
 pause >nul
@@ -48,6 +52,7 @@ ECHO.
 ECHO --GIT RESET--
 ECHO.
 git reset
+ECHO All files reset.
 ECHO.
 ECHO -- -- -- -- --
 pause >nul
@@ -58,11 +63,25 @@ CLS
 ECHO.
 ECHO --GIT COMMIT--
 ECHO.
-SET /p A= -m: 
-git commit -m %A%
+SET /p M= -m: 
+git commit -m %M%
 ECHO.
 SET /P PUSH=Push? (y/n):
 IF /I "%PUSH%" NEQ "Y" (GOTO MENU) ELSE (git push origin main)
+ECHO.
+ECHO -- -- -- -- --
+pause >nul
+GOTO MENU
+
+:CLONE
+CLS
+ECHO.
+ECHO --GIT CLONE--
+ECHO.
+SET /p URL= url: 
+SET /p FOL= folder: 
+ECHO 
+git clone %URL% %FOL%
 ECHO.
 ECHO -- -- -- -- --
 pause >nul
