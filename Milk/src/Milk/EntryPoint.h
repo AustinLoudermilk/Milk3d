@@ -7,9 +7,9 @@ extern Milk::Application* Milk::CreateApplication();
 int main(int argc, char** argv)
 {
 	Milk::Log::Init();
-	Milk::Log::GetCoreLogger()->warn("Logger Initialized");
-	Milk::Log::GetClientLogger()->info("Client");
-
+	MK_CORE_WARN("Logger Initialized");
+	MK_INFO("Client");
+	
 	auto app = Milk::CreateApplication();
 	app->Run();
 	delete app;
