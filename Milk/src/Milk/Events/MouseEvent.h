@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace Milk {
 
 	class MILK_API MouseMovedEvent : public Event

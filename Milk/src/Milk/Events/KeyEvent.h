@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace Milk {
 
 	class MILK_API KeyEvent : public Event
@@ -19,10 +17,10 @@ namespace Milk {
 		int m_KeyCode;
 	};
 
-	class MILK_API KeyPressed : public KeyEvent
+	class MILK_API KeyPressedEvent : public KeyEvent
 	{
 	public:
-		KeyPressed(int keycode, int repeatCount)
+		KeyPressedEvent(int keycode, int repeatCount)
 			: KeyEvent(keycode), m_RepeatCount(repeatCount) {}
 
 		inline int GetRepeatCount() const { return m_RepeatCount; }
@@ -55,4 +53,21 @@ namespace Milk {
 		EVENT_CLASS_TYPE(KeyReleased);
 	};
 
+	class MILK_API KeyTypedEvent : public KeyEvent
+	{
+	public:
+		KeyTypedEvent(int keycode)
+			: KeyEvent(keycode) {}
+
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "KeyTypedEvent: " << m_KeyCode;
+			return ss.str();
+		}
+
+		EVENT_CLASS_TYPE(KeyTyped)
+	private:
+		int m_RepeatCount;
+	};
 }
