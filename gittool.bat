@@ -70,7 +70,9 @@ git commit -m %M%
 ECHO.
 ECHO -- -- -- -- --
 SET /P PUSH=Push? (y/n):
+ECHO -- -- -- -- --
 IF /I "%PUSH%" NEQ "Y" (GOTO MENU) ELSE (git push origin main)
+ECHO -- -- -- -- --
 pause >nul
 GOTO MENU
 
@@ -81,6 +83,8 @@ ECHO --GIT CLONE--
 ECHO.
 SET /p URL= url: 
 SET /p FOL= folder: 
+ECHO.
+ECHO -- -- -- -- --
 ECHO.
 git clone %URL% %FOL%
 ECHO.
@@ -97,7 +101,9 @@ git pull
 ECHO.
 ECHO -- -- -- -- --
 SET /P SUB=Update Submodules? (y/n):
+ECHO -- -- -- -- --
 IF /I "%SUB%" NEQ "Y" (GOTO MENU) ELSE (GOTO SUBMOD)
+ECHO -- -- -- -- --
 pause >nul
 GOTO MENU
 
