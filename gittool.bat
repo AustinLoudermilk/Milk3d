@@ -69,9 +69,13 @@ SET /p M= -m:
 git commit -m %M%
 ECHO.
 ECHO -- -- -- -- --
+ECHO.
 SET /P PUSH=Push? (y/n):
+ECHO.
 ECHO -- -- -- -- --
+ECHO.
 IF /I "%PUSH%" NEQ "Y" (GOTO MENU) ELSE (git push origin main)
+ECHO.
 ECHO -- -- -- -- --
 pause >nul
 GOTO MENU
@@ -100,9 +104,13 @@ ECHO.
 git pull
 ECHO.
 ECHO -- -- -- -- --
+ECHO.
 SET /P SUB=Update Submodules? (y/n):
+ECHO.
 ECHO -- -- -- -- --
+ECHO.
 IF /I "%SUB%" NEQ "Y" (GOTO MENU) ELSE (GOTO SUBMOD)
+ECHO.
 ECHO -- -- -- -- --
 pause >nul
 GOTO MENU
