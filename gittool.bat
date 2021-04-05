@@ -12,8 +12,9 @@ ECHO 3 - reset
 ECHO 4 - commit
 ECHO.
 ECHO 5 - clone
+ECHO 6 - Pull
 ECHO.
-ECHO 6 - exit
+ECHO 7 - exit
 ECHO.
 SET /P M= ~ 
 IF %M%==1 GOTO STATUS
@@ -21,7 +22,8 @@ IF %M%==2 GOTO ADD
 IF %M%==3 GOTO RESET
 IF %M%==4 GOTO COMMIT
 IF %M%==5 GOTO CLONE
-IF %M%==6 GOTO EOF
+IF %M%==6 GOTO PULL
+IF %M%==7 GOTO EOF
 
 :STATUS
 CLS
@@ -66,12 +68,9 @@ ECHO.
 SET /p M= -m: 
 git commit -m %M%
 ECHO.
+ECHO -- -- -- -- --
 SET /P PUSH=Push? (y/n):
 IF /I "%PUSH%" NEQ "Y" (GOTO MENU) ELSE (git push origin main)
-ECHO.
-ECHO -- -- -- -- --
-pause >nul
-GOTO MENU
 
 :CLONE
 CLS
@@ -80,8 +79,31 @@ ECHO --GIT CLONE--
 ECHO.
 SET /p URL= url: 
 SET /p FOL= folder: 
-ECHO 
+ECHO.
 git clone %URL% %FOL%
+ECHO.
+ECHO -- -- -- -- --
+pause >nul
+GOTO MENU
+
+:PULL
+CLS
+ECHO.
+ECHO --GIT PULL--
+ECHO.
+git pull
+ECHO.
+ECHO -- -- -- -- --
+SET /P SUB=Update Submodules? (y/n):
+IF /I "%SUB%" NEQ "Y" (GOTO MENU) ELSE (GOTO SUBMOD)
+
+:SUBMOD
+CLS
+ECHO.
+ECHO --UPDATE SUBMODULE--
+ECHO.
+git submodule init
+git submodule update
 ECHO.
 ECHO -- -- -- -- --
 pause >nul
