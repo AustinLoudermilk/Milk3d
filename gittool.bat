@@ -71,6 +71,8 @@ ECHO.
 ECHO -- -- -- -- --
 SET /P PUSH=Push? (y/n):
 IF /I "%PUSH%" NEQ "Y" (GOTO MENU) ELSE (git push origin main)
+pause >nul
+GOTO MENU
 
 :CLONE
 CLS
@@ -96,6 +98,8 @@ ECHO.
 ECHO -- -- -- -- --
 SET /P SUB=Update Submodules? (y/n):
 IF /I "%SUB%" NEQ "Y" (GOTO MENU) ELSE (GOTO SUBMOD)
+pause >nul
+GOTO MENU
 
 :SUBMOD
 CLS
